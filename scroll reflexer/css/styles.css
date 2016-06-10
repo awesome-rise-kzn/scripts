@@ -1,0 +1,41 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+section{
+  height: 1000px;
+  border: solid 1px ;
+}
+#top{
+  background-color: red;
+}
+
+#menu.section-top{
+  color: #fff;
+}
+#menu.section-middle{
+  color: #000;
+}
+#menu.section-bottom{
+  color: #f40;
+}
+
+#middle{
+  background-color: blue;
+}
+#bottom{
+  background-color: black;
+}
+#menu{
+  position: fixed;
+  color: #000;
+  width: 400px;
+  height: 70px;
+  top: 100%;
+  left: 50%;
+  margin-top: -35px;
+  margin-left: -200px;
+  text-align: center;
+  font-size: 26px;
+}

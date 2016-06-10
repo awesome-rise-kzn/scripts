@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shuffle</title>
+	<meta charset='utf-8'/>
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
+</head>
+<body>
+
+	<div class="header">
+		<div class="head-wrap shift-text">
+			<h1 class="h1">ShuffleLetters.js</h1>
+			<div class="text-editor-wrap">
+				<div class="title-bar"><span class="title">typed.js — bash — 80x<span class="terminal-height">10</span></span></div>
+				<div class="text-body">
+					Пример: <span ID="SHUFFLE">Наведи на меня</span>
+				</div>
+			</div>
+			<span class="tagline">Плагин JQuery >>>> shuffleLetters.js</span>
+		</div>
+	</div>
+</body>
+<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script src="js/shuffleLetters.js"></script>
+
+<script type="text/javascript" >
+$(document).ready(function(){
+	var selector = $("#SHUFFLE"); // Любой селектор
+	var onEnterTimeOut; // нужен для отлова остановки анимации
+	$(selector).mouseenter(function(){ // При наведении
+		onEnterTimeOut = setTimeout(function(){ // Начинаем проигрование анимации если переменная пустая
+			$(selector).css({"width":$(selector).width()+"px","display":"inline-block"}); //устанавливаем блоку длину чтобы можео было кликнуть даже при отсутствии символов.
+			$(selector).shuffleLetters();//перемешивание
+			setTimeout(function(){$(selector).css({"width":"","display":"inline-block"});},1000);//остановим анимацию через 1000 
+		},50);// Воспроизвети анимацию через 50 
+	});
+	$(selector).mouseleave(function(){ // Если пользователь убрал мышку
+		clearTimeout(onEnterTimeOut); // Отчистим переменную чтобы запустить анимацию снова
+	});
+});
+</script>
+
+</html>
