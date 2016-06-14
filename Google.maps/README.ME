@@ -1,7 +1,8 @@
 <script src="catalog/view/javascript/google-maps.js"></script>
 <script type="text/javascript">
-  var marker_big = "<?php echo $image; ?>";
-  var address = "<?php echo $geocode; ?>";
+  var marker_big = "[URL картинки]";
+  var address = "[Адрес]";
+  
   function getPointAddress(geocoder, resultsMap) {
     geocodeAddress(geocoder, resultsMap, marker_big, address);
   };
