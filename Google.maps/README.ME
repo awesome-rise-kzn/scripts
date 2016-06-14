@@ -1,0 +1,15 @@
+<script src="catalog/view/javascript/google-maps.js"></script>
+<script type="text/javascript">
+  var marker_big = "<?php echo $image; ?>";
+  var address = "<?php echo $geocode; ?>";
+  function getPointAddress(geocoder, resultsMap) {
+    geocodeAddress(geocoder, resultsMap, marker_big, address);
+  };
+  function map_resizer (geocoder, resultsMap){
+    resize_map(geocoder, resultsMap, address);
+  };
+</script>
+<script async  defer 
+  type="text/javascript" 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAThzPnDAIU0WZ3H20xnbOqjIIH8WkxPJA&signed_in=true&callback=initMap">
+</script>
