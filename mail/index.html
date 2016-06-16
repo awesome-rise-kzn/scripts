@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	jQuery(function($){
+    $(document).ready(function(){
+      var p = $("form");
+      p.submit(function(){
+        var self = $(this);
+        // alert("asdas");
+        var data = {
+          "name":self.find("input[name='name']").val(),
+          "phone":self.find("input[name='phone']").val(),
+        };
+        getModalData(data,self.find(".return_message"));
+        return false;
+      });
+    });
+    function getModalData(m_data,selector){
+      $.ajax({
+        url: 'mail.php?type=json',
+        type: 'post',
+        data: m_data,
+        dataType: 'json',
+        beforeSend: function() {
+          // Перед отправкой
+        },
+        complete: function() {
+          // После отправки p.s даже если не удалась
+        },
+        success: function(returnData) {
+          console.log(returnData);
+          selector.html(returnData.message);
+          selector.show();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            //обрабатываем ошибки
+        }
+      });
+    }
+  });
+</script>
+<form  method="post" id="form" class="form-info wow fadeInUp" data-wow-delay="2s">
+                                    <p>
+                                        Заполните форму и получите презентацию на почту
+                                    </p>
+                                    <div class="form-group">
+                                        <input type="name" name="name" required>
+                                        <span class="form-bar"></span>
+                                        <label>Введите ваше имя</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="email" required>
+                                        <span class="form-bar"></span>
+                                        <label>Введите ваш email</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="phone" name="phone" class="phone" required>
+                                        <span class="form-bar"></span>
+                                        <label>Введите ваш телефон</label>
+                                    </div>
+                                    <div class="return_message"></div>
+                                    <button class="skew" type="submit">Получить презентацию</button>
+                                </form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+</body>
+</html>
